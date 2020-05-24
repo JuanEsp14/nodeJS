@@ -18,6 +18,7 @@ crearArchivo = (base) => {
     })
 }
 
+
 //Se le añaden las funciones que queremos exportar, desde
 //ES6 permite poner solo un nombre, si se quiere cambiar el 
 //nombre de la función se puede hacer 
