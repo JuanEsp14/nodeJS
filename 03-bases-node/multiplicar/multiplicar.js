@@ -1,13 +1,23 @@
 const fs = require('fs');
 
-crearArchivo = (base) => {
+listarTabla = (base, limite = 10) => {
+    if (!Number(base) || !Number(limite)) {
+        console.log(`El valor introducido de base (${base}) no es un número`);
+        return;
+    }
+    for (let i = 1; i <= limite; i++) {
+        console.log(` ${base} * ${i} = ${base*i}\n`);
+    }
+}
+
+crearArchivo = (base, limite = 10) => {
     return new Promise((resolve, reject) => {
         if (!Number(base)) {
             reject(`El valor introducido(${base}) no es un número`);
             return;
         }
         let data = '';
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= limite; i++) {
             data += ` ${base} * ${i} = ${base*i}\n`;
         }
 
@@ -24,5 +34,6 @@ crearArchivo = (base) => {
 //nombre de la función se puede hacer 
 //nombreNuevo: funcionAExportar
 module.exports = {
-    crearArchivo
+    crearArchivo,
+    listarTabla
 }

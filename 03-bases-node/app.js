@@ -4,8 +4,18 @@
 const argvYargs = require('yargs')
     .command('listar', 'Imprime en consola la tabla de multiplicar', {
         base: {
-            demand: true,
-            alias: 'b'
+            alias: 'b',
+            demand: true
+        },
+        limite: {
+            alias: 'l',
+            default: 10
+        }
+    })
+    .command('crear', 'Guarda en un archivo la tabla de multiplicar', {
+        base: {
+            alias: 'b',
+            demand: true
         },
         limite: {
             alias: 'l',
@@ -15,7 +25,7 @@ const argvYargs = require('yargs')
     .help()
     .argv;
 
-const { crearArchivo } = require('./multiplicar/multiplicar');
+const { crearArchivo, listarTabla } = require('./multiplicar/multiplicar');
 
 //module está definido en NodeJS y puede ser utilziado en 
 //cualquier parte del programa, en ella se encuentran diferentes
@@ -33,15 +43,25 @@ const { crearArchivo } = require('./multiplicar/multiplicar');
 //hay dos la ubicación de la instalación de NodeJs y la ubicación del 
 //archivo en donde nos encontramos
 let argv = process.argv;
-// let parametro = argv[2];
-// let base = parametro.split('=')[1];
 
 console.log(process.argv);
 console.log(argvYargs);
 
-// console.log(parametro);
+let comando = argvYargs._[0];
 
+switch (comando) {
+    case 'listar':
+        console.log('Listar');
+        listarTabla(argvYargs.base, argvYargs.limite);
+        break;
+    case 'crear':
+        console.log('Crear');
+        crearArchivo(argvYargs.base, argvYargs.limite)
+            .then(archivo => console.log(`El archivo tabla-${argvYargs.base}.txt ha sido creado!`))
+            .catch(e => console.log(e));
+        break;
 
-// crearArchivo(base)
-//     .then(archivo => console.log(`El archivo tabla-${base}.txt ha sido creado!`))
-//     .catch(e => console.log(e));
+    default:
+        console.log('Comando no reconocido');
+        break;
+}
