@@ -2,6 +2,10 @@ const { crearArchivo, listarTabla } = require('./multiplicar/multiplicar');
 
 const argvYargs = require('./config/yargs').argvYargs;
 
+//Colors nos permite cambiar los colores en la consola mientras
+//se está ejecutando el programa
+const colors = require('colors');
+
 //module está definido en NodeJS y puede ser utilziado en 
 //cualquier parte del programa, en ella se encuentran diferentes
 //funciones que le agreguemos para poder hacer reutilziación
@@ -32,7 +36,7 @@ switch (comando) {
     case 'crear':
         console.log('Crear');
         crearArchivo(argvYargs.base, argvYargs.limite)
-            .then(archivo => console.log(`El archivo tabla-${argvYargs.base}.txt ha sido creado!`))
+            .then(archivo => console.log('El archivo ' + `tabla-${argvYargs.base}.txt`.green + ' ha sido creado!'))
             .catch(e => console.log(e));
         break;
 

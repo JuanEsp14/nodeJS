@@ -1,6 +1,10 @@
 const fs = require('fs');
+const colors = require('colors');
 
 listarTabla = (base, limite = 10) => {
+    console.log('========================='.green);
+    console.log(`Tabla del ${base}`.green);
+    console.log('========================='.green);
     if (!Number(base) || !Number(limite)) {
         console.log(`El valor introducido de base (${base}) no es un número`);
         return;
