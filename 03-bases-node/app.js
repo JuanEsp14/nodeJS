@@ -1,31 +1,6 @@
-//El paquete yargs está creada para la verificación de parámetros
-//que se ingresan por consola a nuestro programa, realizando las 
-//verificaciones y agregando comentarios si es necesarios al mismo
-const argvYargs = require('yargs')
-    .command('listar', 'Imprime en consola la tabla de multiplicar', {
-        base: {
-            alias: 'b',
-            demand: true
-        },
-        limite: {
-            alias: 'l',
-            default: 10
-        }
-    })
-    .command('crear', 'Guarda en un archivo la tabla de multiplicar', {
-        base: {
-            alias: 'b',
-            demand: true
-        },
-        limite: {
-            alias: 'l',
-            default: 10
-        }
-    })
-    .help()
-    .argv;
-
 const { crearArchivo, listarTabla } = require('./multiplicar/multiplicar');
+
+const argvYargs = require('./config/yargs').argvYargs;
 
 //module está definido en NodeJS y puede ser utilziado en 
 //cualquier parte del programa, en ella se encuentran diferentes
