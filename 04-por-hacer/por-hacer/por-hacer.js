@@ -15,7 +15,11 @@ const cargarDb = () => {
     } catch (error) {
         listadoPorHacer = [];
     }
+}
 
+const getListado = () => {
+    cargarDb();
+    return listadoPorHacer;
 }
 
 const crear = (descripcion) => {
@@ -31,5 +35,6 @@ const crear = (descripcion) => {
 }
 
 module.exports = {
-    crear
+    crear,
+    getListado
 }
