@@ -9,7 +9,17 @@ const guardarDb = () => {
     });
 }
 
+const cargarDb = () => {
+    try {
+        listadoPorHacer = require('../db/data.json');
+    } catch (error) {
+        listadoPorHacer = [];
+    }
+
+}
+
 const crear = (descripcion) => {
+    cargarDb();
     let porHacer = {
         descripcion,
         completado: false
