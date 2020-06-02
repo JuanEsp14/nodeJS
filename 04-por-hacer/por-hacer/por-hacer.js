@@ -47,8 +47,24 @@ const actualizar = (descripcion, completado = true) => {
     return false;
 }
 
+const borrar = (descripcion) => {
+    cargarDb();
+    let nuevoListado = listadoPorHacer.filter(tarea => tarea.descripcion !== descripcion);
+
+    if (nuevoListado.length != listadoPorHacer.length) {
+        listadoPorHacer = nuevoListado;
+        guardarDb();
+        return true;
+    }
+
+    return false;
+}
+
 module.exports = {
     crear,
     getListado,
-    actualizar
+    actualizar,
+    borrar
 }
+
+//[{ "descripcion": "Comer", "completado": false }, { "descripcion": "Dormir", "completado": false }, { "descripcion": "Salir", "completado": "false" }]

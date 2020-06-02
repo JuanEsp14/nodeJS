@@ -1,4 +1,4 @@
-const opcionesCrear = {
+const opciones = {
     descripcion: {
         alias: 'd',
         demand: true,
@@ -20,8 +20,9 @@ const opcionesActualizar = {
 };
 
 const argv = require('yargs')
-    .command('crear', 'Crear un elemento por hacer', opcionesCrear)
+    .command('crear', 'Crear un elemento por hacer', opciones)
     .command('actualizar', 'Actualiza el estado de una tarea', opcionesActualizar)
+    .command('borrar', 'Borra un elemento por hacer', opciones)
     .help()
     .argv;
 
