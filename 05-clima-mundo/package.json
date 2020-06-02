@@ -1,0 +1,14 @@
+{
+  "name": "05-clima-mundo",
+  "version": "1.0.0",
+  "description": "App que obtiene el clima del mundo",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Juan Espinoza",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^15.3.1"
+  }
+}
